@@ -26,12 +26,12 @@ def calculate_total(transactions):
 def categorize_expenses(transactions):
     categories = {}
     for transaction in transactions:
-        if transaction[0] < 0:
-            category = transaction[1]
+        amount, category, _ = transaction
+        if amount < 0:
             if category in categories:
-                categories[category] += abs(transaction[0])
+                categories[category] += abs(amount)
             else:
-                categories[category] = abs(transaction[0])
+                categories[category] = abs(amount)
     return categories
 
 # Function to set monthly budgets
